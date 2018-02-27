@@ -31,6 +31,28 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+
+    /*Pay off as many loans as possible. To repay a loan, you must pay £15 to the bank.
+             Calculate your final PPs = (PPs + 1 / card in your hand) - min(PPs players )
+
+         Discard your remaining cards.
+    Consult the Poverty Points table to determine your VP Penalty.
+             VPs Number =
+            VPs won while running the city
++ 1 VP / lot of £3
++ x VPs / borough occupied by one of your building, increased by 2 if there is
+    an Underground counter (x varies according to the borough)
++ VPs scored by the cards in your Building Display
+- 7 VPs / unpaid loan of £10
+- VP Penalty
+ The player with the most victory points is the winner.
+             If there is a tie, then the tied player who has the fewest poverty points is the winner.
+    If there is still a tie, then the tied player who occupies the most boroughs on the map
+    is the winner. If the tie is still not broken, then the tied player who has the single
+    highest value victory point card is the winner.*/
+
+    
+
     /**
      * Count red player's poverty points, which equals the number of cards in hand     *
      *
