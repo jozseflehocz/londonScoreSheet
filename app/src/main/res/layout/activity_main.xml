@@ -16,6 +16,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:background="@color/colorSecondaryAccent"
+            android:gravity="center_vertical|center_horizontal"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -40,7 +42,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/bluePlayerLayout"
+                android:id="@+id/BluePlayerLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -65,7 +67,7 @@
             android:id="@+id/scoresLayout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="6"
+            android:layout_weight="3"
             android:orientation="horizontal">
 
             <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -81,63 +83,49 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="8dp"
                         android:layout_weight="1"
                         android:orientation="vertical">
 
                         <Button
                             style="@style/AppTheme.buttonScore"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:onClick="increaseRedPoverty"
+                            android:onClick="increaseRedPovertyPoints"
                             android:text="@string/cards_in_hand" />
 
                         <Button
                             style="@style/AppTheme.buttonScore"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
                             android:onClick="increaseRedMoney"
                             android:text="@string/money" />
 
                         <Button
                             style="@style/AppTheme.buttonScore"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
                             android:onClick="increaseRedBuildings"
                             android:text="@string/buildings" />
 
                         <Button
                             style="@style/AppTheme.buttonScore"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
                             android:onClick="increaseRedUndergrounds"
                             android:text="@string/undergrounds" />
 
                         <Button
                             style="@style/AppTheme.buttonScore"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
                             android:onClick="increaseRedCardDisplay"
                             android:text="@string/cards_in_building_display" />
 
                         <Button
                             style="@style/AppTheme.buttonScore"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
                             android:onClick="increaseRedHand"
                             android:text="@string/victory_points_in_hand" />
 
                         <Button
                             style="@style/AppTheme.buttonScore"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
                             android:onClick="decreaseRedLoan"
                             android:text="@string/unpaid_loan" />
 
                         <Button
                             style="@style/AppTheme.buttonScore"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:onClick="increaseRedPoverty"
+                            android:onClick="increaseRedPovertyPoints"
                             android:text="@string/poverty_points" />
                     </LinearLayout>
 
@@ -149,63 +137,51 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="8dp"
                         android:layout_weight="1"
                         android:orientation="vertical">
 
                         <Button
                             style="@style/AppTheme.buttonScore"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:onClick="increasebluePoverty"
+                            android:onClick="increaseBluePovertyPoints"
                             android:text="@string/cards_in_hand" />
 
                         <Button
                             style="@style/AppTheme.buttonScore"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:onClick="increaseblueMoney"
+                            android:onClick="increaseBlueMoney"
                             android:text="@string/money" />
 
                         <Button
                             style="@style/AppTheme.buttonScore"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:onClick="increaseblueBuildings"
+                            android:onClick="increaseBlueBuildings"
                             android:text="@string/buildings" />
 
                         <Button
                             style="@style/AppTheme.buttonScore"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:onClick="increaseblueUndergrounds"
+                            android:onClick="increaseBlueUndergrounds"
                             android:text="@string/undergrounds" />
 
                         <Button
                             style="@style/AppTheme.buttonScore"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:onClick="increaseblueCardDisplay"
+                            android:onClick="increaseBlueCardDisplay"
                             android:text="@string/cards_in_building_display" />
 
                         <Button
                             style="@style/AppTheme.buttonScore"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:onClick="increaseblueHand"
+                            android:onClick="increaseBlueHand"
                             android:text="@string/victory_points_in_hand" />
 
                         <Button
                             style="@style/AppTheme.buttonScore"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:onClick="decreaseblueLoan"
+                            android:onClick="decreaseBlueLoan"
                             android:text="@string/unpaid_loan" />
 
                         <Button
                             style="@style/AppTheme.buttonScore"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:onClick="increasebluePoverty"
+                            android:onClick="increaseBluePovertyPoints"
                             android:text="@string/poverty_points" />
                     </LinearLayout>
                 </LinearLayout>
@@ -217,7 +193,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
+            android:background="@color/colorSecondaryAccent"
+            android:gravity="center_vertical|center_horizontal"
             android:orientation="horizontal">
 
             <Button
