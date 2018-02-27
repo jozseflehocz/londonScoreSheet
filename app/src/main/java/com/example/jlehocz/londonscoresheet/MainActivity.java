@@ -50,8 +50,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void increaseRedMoney(View v) {
         redMoney = redMoney + 1;
-        //https://stackoverflow.com/questions/153724/how-to-round-a-number-to-n-decimal-places-in-java
-        redScore = (int) (Math.round((redMoney / 3) * 10d) / 10d);
         calculateForRedPlayer();
     }
 
@@ -61,8 +59,7 @@ public class MainActivity extends AppCompatActivity {
      * @param v
      */
     public void increaseRedBuildings(View v) {
-        //redBuildingPoints =redBuildingPoints+1;
-        redScore += 1;
+        redBuildingPoints = redBuildingPoints + 1;
         calculateForRedPlayer();
     }
 
@@ -116,6 +113,10 @@ public class MainActivity extends AppCompatActivity {
      * then display the player's total score
      */
     public void calculateForRedPlayer() {
+        //https://stackoverflow.com/questions/153724/how-to-round-a-number-to-n-decimal-places-in-java
+        redScore += (int) (Math.round((redMoney / 3) * 10d) / 10d);
+        redScore += redBuildingPoints;
+
         calculateRedPovertyPoints();
         displayForRedPlayer();
     }
