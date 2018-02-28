@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity {
     int redPovertyPoints = 0; // red player's poverty points 
     int redMoney = 0; // red player's total amount of money
     int redBuildingPoints = 0; // red player's victory points for buildings
-    int redUndergroundPoints = 0; // red player's victory points for undergrounds
+    int redUndergrounds = 0; // red player's victory points for undergrounds
     int redCardDisplayPoints = 0; // red player's victory points for cards on display 
     int redPointsInHand = 0; // red players's collected victory points during the game
     int redUnpaidLoans = 0; // red player's unpaid loans
@@ -20,10 +20,12 @@ public class MainActivity extends AppCompatActivity {
     int bluePovertyPoints = 0; // blue player's poverty points 
     int blueMoney = 0; // blue player's total amount of money
     int blueBuildingPoints = 0; // blue player's victory points for buildings
-    int blueUndergroundPoints = 0; // blue player's victory points for undergrounds
+    int blueUndergrounds = 0; // blue player's victory points for undergrounds
     int blueCardDisplayPoints = 0; // blue player's victory points for cards on display 
     int bluePointsInHand = 0; // blue players's collected victory points during the game
     int blueUnpaidLoans = 0; // blue player's unpaid loans
+
+    int minPoverty = 0; //Minimum poverty points among players
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,58 +33,38 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-
-    /*Pay off as many loans as possible. To repay a loan, you must pay £15 to the bank.
-             Calculate your final PPs = (PPs + 1 / card in your hand) - min(PPs players )
-
-         Discard your remaining cards.
-    Consult the Poverty Points table to determine your VP Penalty.
-             VPs Number =
-            VPs won while running the city
-+ 1 VP / lot of £3
-+ x VPs / borough occupied by one of your building, increased by 2 if there is
-    an Underground counter (x varies according to the borough)
-+ VPs scored by the cards in your Building Display
-- 7 VPs / unpaid loan of £10
-- VP Penalty
- The player with the most victory points is the winner.
-             If there is a tie, then the tied player who has the fewest poverty points is the winner.
-    If there is still a tie, then the tied player who occupies the most boroughs on the map
-    is the winner. If the tie is still not broken, then the tied player who has the single
-    highest value victory point card is the winner.*/
-
-    
-
     /**
-     * Count red player's poverty points, which equals the number of cards in hand     *
+     * Count red player's number of cards in hand, to convert to poverty points
      *
      * @param v
      */
 
     public void increaseRedPovertyPoints(View v) {
         redPovertyPoints = redPovertyPoints + 1;
-        calculateForRedPlayer();
+        calculateScore();
     }
 
     /**
-     * Count red player's money, then divide by 3 to convert victory points     *
+     * Count red player's money
      *
      * @param v
      */
 
     public void increaseRedMoney(View v) {
         redMoney = redMoney + 1;
-        calculateForRedPlayer();
+        calculateScore();
     }
 
     /**
      * Count red player's victory points on his buildings
+     * (Each borough that you have a building counter in scores
+     * a number of victory points as indicated on the board.)
      *
      * @param v
      */
     public void increaseRedBuildings(View v) {
-        redBuildingPoints = redBuildingPoints + 1;
-        calculateForRedPlayer();
+        redBuildingPoints += 1;
+        calculateScore();
     }
 
     /**
@@ -91,9 +73,8 @@ public class MainActivity extends AppCompatActivity {
      * @param v
      */
     public void increaseRedUndergrounds(View v) {
-        //redUndergroundPoints = redUndergroundPoints + 1;
-        redScore += 2;
-        calculateForRedPlayer();
+        redUndergrounds = redUndergrounds + 1;
+        calculateScore();
     }
 
     /**
@@ -102,20 +83,18 @@ public class MainActivity extends AppCompatActivity {
      * @param v
      */
     public void increaseRedCardDisplay(View v) {
-        //redCardDisplayPoints = redCardDisplayPoints + 1;
-        redScore += 1;
-        calculateForRedPlayer();
+        redCardDisplayPoints = redCardDisplayPoints + 1;
+        calculateScore();
     }
 
     /**
-     * Count red player's victory points collected during the game
+     * Red player's victory points won while running the city
      *
      * @param v
      */
     public void increaseRedHand(View v) {
-        //redPointsInHand = redPointsInHand + 1;
-        redScore += 1;
-        calculateForRedPlayer();
+        redPointsInHand = redPointsInHand + 1;
+        calculateScore();
     }
 
     /**
@@ -125,29 +104,152 @@ public class MainActivity extends AppCompatActivity {
      * @param v
      */
     public void decreaseRedLoan(View v) {
-        //redUnpaidLoans = redUnpaidLoans + 1;
-        redScore += -7;
-        calculateForRedPlayer();
+        redUnpaidLoans = redUnpaidLoans + 1;
+        calculateScore();
     }
 
     /**
-     * Calculates red player's penalty after the poverty points,
-     * then display the player's total score
+     * Count blue player's number of cards in hand, to convert to poverty points
+     *
+     * @param v
      */
-    public void calculateForRedPlayer() {
+
+    public void increaseBluePovertyPoints(View v) {
+        bluePovertyPoints = bluePovertyPoints + 1;
+        calculateScore();
+    }
+
+    /**
+     * Count blue player's money, then divide by 3 to convert victory points
+     *
+     * @param v
+     */
+
+    public void increaseBlueMoney(View v) {
+        blueMoney = blueMoney + 1;
+        calculateScore();
+    }
+
+    /**
+     * Count blue player's victory points on his buildings
+     * (Each borough that you have a building counter in scores
+     * a number of victory points as indicated on the board.)
+     *
+     * @param v
+     */
+    public void increaseBlueBuildings(View v) {
+        blueBuildingPoints = blueBuildingPoints + 1;
+        calculateScore();
+    }
+
+    /**
+     * Count blue player's undergrounds
+     *
+     * @param v
+     */
+    public void increaseBlueUndergrounds(View v) {
+        blueUndergrounds = blueUndergrounds + 1;
+        calculateScore();
+    }
+
+    /**
+     * Count blue player's victory points on cards on his card display
+     *
+     * @param v
+     */
+    public void increaseBlueCardDisplay(View v) {
+        blueCardDisplayPoints = blueCardDisplayPoints + 1;
+        calculateScore();
+    }
+
+    /**
+     * Blue player's victory points won while running the city
+     *
+     * @param v
+     */
+    public void increaseBlueHand(View v) {
+        bluePointsInHand = bluePointsInHand + 1;
+        calculateScore();
+    }
+
+    /**
+     * Count blue player's unpaid loans of 10 pounds,
+     * with each the victory points should be decreased by 7
+     *
+     * @param v
+     */
+    public void decreaseBlueLoan(View v) {
+        blueUnpaidLoans = blueUnpaidLoans + 1;
+        calculateScore();
+    }
+
+
+    /**
+     * Calculates penalty of players after the poverty points,
+     * then display the players total score
+     */
+    public void calculateScore() {
+
+        //total scores should be reseted before every calculation
+        redScore = 0;
+        blueScore = 0;
+
+        //Red player's score
         //https://stackoverflow.com/questions/153724/how-to-round-a-number-to-n-decimal-places-in-java
-        redScore += (int) (Math.round((redMoney / 3) * 10d) / 10d);
+        // (Take one victory point for each lot of £3 you have.)
+        redScore += Math.round(((double) redMoney / 3) * 10d) / 10d;
+
+        //Each borough that you have a building counter in scores
+        //a number of victory points as indicated on the board.
         redScore += redBuildingPoints;
 
-        calculateRedPovertyPoints();
-        displayForRedPlayer();
+        // (Add two victory points to this value if there is an Underground
+        // counter in the borough)
+        redScore += redUndergrounds * 2;
+
+        //Each card in your Building Display, irrespective of whether the card has been
+        //flipped or built on top of, scores a number of victory points as indicated
+        // on the card
+        redScore += redCardDisplayPoints;
+
+        //Count the victory points in hand that you have gained.
+        redScore += redPointsInHand;
+
+        //Each unpaid loan of £10 loses you seven victory points.
+        redScore += -7 * redUnpaidLoans;
+
+        //Blue player's score
+        //https://stackoverflow.com/questions/153724/how-to-round-a-number-to-n-decimal-places-in-java
+        // (Take one victory point for each lot of £3 you have.)
+        blueScore += Math.round(((double) blueMoney / 3) * 10d) / 10d;
+        //Each borough that you have a building counter in scores
+        //a number of victory points as indicated on the board.
+        blueScore += blueBuildingPoints;
+        // (Add two victory points to this value if there is an Underground
+        // counter in the borough)
+        blueScore += blueUndergrounds * 2;
+
+        //Each card in your Building Display, irrespective of whether the card has been
+        //flipped or built on top of, scores a number of victory points as indicated
+        // on the card
+        blueScore += blueCardDisplayPoints;
+
+        //Count the victory points in hand that you have gained.
+        blueScore += bluePointsInHand;
+
+        //Each unpaid loan of £10 loses you seven victory points.
+        blueScore += -7 * blueUnpaidLoans;
+        calculatePovertyPoints();
+        displayScore();
     }
 
     /**
-     * Calculates red player's penalty after his poverty points
+     * Calculates players penalty after his poverty points
+     * Consult the Poverty Points table to determine your VP Penalty.     *
      */
-    public void calculateRedPovertyPoints() {
+    public void calculatePovertyPoints() {
 
+        //final PPs = (PPs + 1 / card in your hand) - min(PPs players )
         int povertyDifference = redPovertyPoints - bluePovertyPoints;
 
         //The lowest poverty point becomes 0, the highest decreased with the lowest
@@ -174,117 +276,9 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 redScore = redScore - 1;
             }
-        }
-    }
-
-    /**
-     * Displays red player's total score
-     */
-    public void displayForRedPlayer() {
-        TextView scoreView = (TextView) findViewById(R.id.red_player_score);
-        scoreView.setText(String.valueOf(redScore));
-    }
-
-    /**
-     * Count blue player's poverty points, which equals the number of cards in hand     *
-     *
-     * @param v
-     */
-
-    public void increaseBluePovertyPoints(View v) {
-        bluePovertyPoints = bluePovertyPoints + 1;
-        calculateForBluePlayer();
-    }
-
-    /**
-     * Count blue player's money, then divide by 3 to convert victory points     *
-     *
-     * @param v
-     */
-
-    public void increaseBlueMoney(View v) {
-        blueMoney = blueMoney + 1;
-        //https://stackoverflow.com/questions/153724/how-to-round-a-number-to-n-decimal-places-in-java
-        blueScore = (int) (Math.round((blueMoney / 3) * 10d) / 10d);
-        calculateForBluePlayer();
-    }
-
-    /**
-     * Count blue player's victory points on his buildings
-     *
-     * @param v
-     */
-    public void increaseBlueBuildings(View v) {
-        //blueBuildingPoints = blueBuildingPoints + 1;
-        blueScore += 1;
-        calculateForBluePlayer();
-    }
-
-    /**
-     * Count blue player's undergrounds each worth 2 victory points
-     *
-     * @param v
-     */
-    public void increaseBlueUndergrounds(View v) {
-        //blueUndergroundPoints = blueUndergroundPoints + 1;
-        blueScore += 2;
-        calculateForBluePlayer();
-    }
-
-    /**
-     * Count blue player's victory points on cards on his card display
-     *
-     * @param v
-     */
-    public void increaseBlueCardDisplay(View v) {
-        //blueCardDisplayPoints = blueCardDisplayPoints + 1;
-        blueScore += 1;
-        calculateForBluePlayer();
-    }
-
-    /**
-     * Count blue player's victory points collected during the game
-     *
-     * @param v
-     */
-    public void increaseBlueHand(View v) {
-        //bluePointsInHand = bluePointsInHand + 1;
-        blueScore += 1;
-        calculateForBluePlayer();
-    }
-
-    /**
-     * Count blue player's unpaid loans of 10 pounds,
-     * with each the victory points should be decreased by 7
-     *
-     * @param v
-     */
-    public void decreaseBlueLoan(View v) {
-        //blueUnpaidLoans = blueUnpaidLoans + 1;
-        blueScore += -7;
-        calculateForBluePlayer();
-    }
-
-    /**
-     * Calculates blue player's penalty after the poverty points,
-     * then display the player's total score
-     */
-    public void calculateForBluePlayer() {
-        calculateBluePovertyPoints();
-        displayForBluePlayer();
-    }
-
-    /**
-     * Calculates blue player's penalty after his poverty points
-     */
-    public void calculateBluePovertyPoints() {
-
-        int povertyDifference = bluePovertyPoints - redPovertyPoints;
-
-        //The lowest poverty point becomes 0, the highest decreased with the lowest
-        if (povertyDifference > 0) {
-
-            // Red player's victory point adjustment by poverty point table
+        } else if (povertyDifference < 0) {
+            povertyDifference = -1 * povertyDifference;
+            // Blue player's victory point adjustment by poverty point table
             if (povertyDifference > 10) {
                 blueScore = blueScore - 15 - 3 * (povertyDifference - 10);
             } else if (povertyDifference == 10) {
@@ -310,16 +304,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Displays blue player's total score
-     */
-    public void displayForBluePlayer() {
-        TextView scoreView = (TextView) findViewById(R.id.blue_player_score);
-        scoreView.setText(String.valueOf(blueScore));
-    }
-
-
-    /**
-     * Reset all points and scores
+     * Reset all points and display scores
      *
      * @param v
      */
@@ -328,7 +313,7 @@ public class MainActivity extends AppCompatActivity {
         redPovertyPoints = 0;
         redMoney = 0;
         redBuildingPoints = 0;
-        redUndergroundPoints = 0;
+        redUndergrounds = 0;
         redCardDisplayPoints = 0;
         redPointsInHand = 0;
         redUnpaidLoans = 0;
@@ -337,12 +322,26 @@ public class MainActivity extends AppCompatActivity {
         bluePovertyPoints = 0;
         blueMoney = 0;
         blueBuildingPoints = 0;
-        blueUndergroundPoints = 0;
+        blueUndergrounds = 0;
         blueCardDisplayPoints = 0;
         bluePointsInHand = 0;
         blueUnpaidLoans = 0;
 
-        displayForRedPlayer();
-        displayForBluePlayer();
+        calculatePovertyPoints();
+        displayScore();
+    }
+
+    /**
+     * Displays players total score, and poverty points for easier checking
+     */
+    public void displayScore() {
+        TextView scoreView = (TextView) findViewById(R.id.red_player_score);
+        scoreView.setText(String.valueOf(redScore));
+        scoreView = (TextView) findViewById(R.id.red_player_poverty);
+        scoreView.setText(String.valueOf(redPovertyPoints));
+        scoreView = (TextView) findViewById(R.id.blue_player_score);
+        scoreView.setText(String.valueOf(blueScore));
+        scoreView = (TextView) findViewById(R.id.blue_player_poverty);
+        scoreView.setText(String.valueOf(bluePovertyPoints));
     }
 }

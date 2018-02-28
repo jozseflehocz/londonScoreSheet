@@ -2,8 +2,8 @@
     <string name="app_name">London Score Sheet</string>
     <string name="red_player">Red</string>
     <string name="blue_player">Blue</string>
-    <string name="cards_in_hand">Cards</string>
-    <string name="money">Money</string>
+    <string name="cards_in_hand">Cards in hand</string>
+    <string name="money">Money </string>
     <string name="buildings">Buildings</string>
     <string name="undergrounds">Undergrounds</string>
     <string name="cards_in_building_display">Display</string>
@@ -11,4 +11,6 @@
     <string name="unpaid_loan">Loans</string>
     <string name="poverty_points">Poverty</string>
     <string name="reset">Reset</string>
+    <string name="add">+</string>
+    <string name="substract">-</string>
 </resources>
