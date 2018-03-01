@@ -3,12 +3,12 @@
     <string name="red_player">Red</string>
     <string name="blue_player">Blue</string>
     <string name="cards_in_hand">Cards in hand</string>
-    <string name="money">Money </string>
+    <string name="money">Money (/3)</string>
     <string name="buildings">Buildings</string>
-    <string name="undergrounds">Undergrounds</string>
+    <string name="undergrounds">Undergrounds (*2)</string>
     <string name="cards_in_building_display">Display</string>
     <string name="victory_points_in_hand">VPs</string>
-    <string name="unpaid_loan">Loans</string>
+    <string name="unpaid_loan">Loans (-7)</string>
     <string name="poverty_points">Poverty</string>
     <string name="reset">Reset</string>
     <string name="add">+</string>
