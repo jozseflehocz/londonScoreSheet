@@ -255,50 +255,77 @@ public class MainActivity extends AppCompatActivity {
         //The lowest poverty point becomes 0, the highest decreased with the lowest
         if (povertyDifference > 0) {
             // Red player's victory point adjustment by poverty point table
-            if (povertyDifference > 10) {
-                redScore = redScore - 15 - 3 * (povertyDifference - 10);
-            } else if (povertyDifference == 10) {
-                redScore = redScore - 15;
-            } else if (povertyDifference == 9) {
-                redScore = redScore - 13;
-            } else if (povertyDifference == 8) {
-                redScore = redScore - 11;
-            } else if (povertyDifference == 7) {
-                redScore = redScore - 9;
-            } else if (povertyDifference == 6) {
-                redScore = redScore - 7;
-            } else if (povertyDifference == 5) {
-                redScore = redScore - 5;
-            } else if (povertyDifference == 4) {
-                redScore = redScore - 3;
-            } else if (povertyDifference == 3) {
-                redScore = redScore - 2;
-            } else {
-                redScore = redScore - 1;
+            switch (povertyDifference) {
+                case 1:
+                    redScore = redScore - 1;
+                    break;
+                case 2:
+                    redScore = redScore - 1;
+                    break;
+                case 3:
+                    redScore = redScore - 2;
+                    break;
+                case 4:
+                    redScore = redScore - 3;
+                    break;
+                case 5:
+                    redScore = redScore - 5;
+                    break;
+                case 6:
+                    redScore = redScore - 7;
+                    break;
+                case 7:
+                    redScore = redScore - 9;
+                    break;
+                case 8:
+                    redScore = redScore - 11;
+                    break;
+                case 9:
+                    redScore = redScore - 13;
+                    break;
+                case 10:
+                    redScore = redScore - 15;
+                    break;
+                default:
+                    redScore = redScore - 15 - 3 * (povertyDifference - 10);
             }
+
         } else if (povertyDifference < 0) {
             povertyDifference = -1 * povertyDifference;
             // Blue player's victory point adjustment by poverty point table
-            if (povertyDifference > 10) {
-                blueScore = blueScore - 15 - 3 * (povertyDifference - 10);
-            } else if (povertyDifference == 10) {
-                blueScore = blueScore - 15;
-            } else if (povertyDifference == 9) {
-                blueScore = blueScore - 13;
-            } else if (povertyDifference == 8) {
-                blueScore = blueScore - 11;
-            } else if (povertyDifference == 7) {
-                blueScore = blueScore - 9;
-            } else if (povertyDifference == 6) {
-                blueScore = blueScore - 7;
-            } else if (povertyDifference == 5) {
-                blueScore = blueScore - 5;
-            } else if (povertyDifference == 4) {
-                blueScore = blueScore - 3;
-            } else if (povertyDifference == 3) {
-                blueScore = blueScore - 2;
-            } else {
-                blueScore = blueScore - 1;
+            switch (povertyDifference) {
+                case 1:
+                    blueScore = blueScore - 1;
+                    break;
+                case 2:
+                    blueScore = blueScore - 1;
+                    break;
+                case 3:
+                    blueScore = blueScore - 2;
+                    break;
+                case 4:
+                    blueScore = blueScore - 3;
+                    break;
+                case 5:
+                    blueScore = blueScore - 5;
+                    break;
+                case 6:
+                    blueScore = blueScore - 7;
+                    break;
+                case 7:
+                    blueScore = blueScore - 9;
+                    break;
+                case 8:
+                    blueScore = blueScore - 11;
+                    break;
+                case 9:
+                    blueScore = blueScore - 13;
+                    break;
+                case 10:
+                    blueScore = blueScore - 15;
+                    break;
+                default:
+                    blueScore = blueScore - 15 - 3 * (povertyDifference - 10);
             }
         }
     }
