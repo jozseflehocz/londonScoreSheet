@@ -7,69 +7,47 @@
 
     <LinearLayout
         android:id="@+id/parentLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        style="@style/parentLayout">
 
         <LinearLayout
             android:id="@+id/playersLayout"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:background="@color/colorSecondaryAccent"
-            android:gravity="center_vertical|center_horizontal"
-            android:orientation="horizontal">
+            style="@style/playersLayout">
 
             <LinearLayout
                 android:id="@+id/redPlayerLayout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                style="@style/playerLayout">
 
                 <TextView
                     style="@style/playerName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:text="@string/red_player" />
 
                 <TextView
                     android:id="@+id/red_player_score"
                     style="@style/playerScore"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:text="0" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/BluePlayerLayout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                style="@style/playerLayout">
 
                 <TextView
                     style="@style/playerName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:text="@string/blue_player" />
 
                 <TextView
                     android:id="@+id/blue_player_score"
                     style="@style/playerScore"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:text="0" />
             </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/scoresLayout"
-            style="@style/scoresLayout">
+            android:id="@+id/buttonsParentLayout"
+            style="@style/buttonsParentLayout">
 
             <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                style="@style/scrollView">
 
                 <LinearLayout
                     android:id="@+id/layout1"

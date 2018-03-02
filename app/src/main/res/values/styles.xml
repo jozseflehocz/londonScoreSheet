@@ -8,10 +8,34 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="parentLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="playersLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@color/colorSecondaryAccent</item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="playerLayout">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
     <style name="playerName">
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/colorPrimaryDark</item>
         <item name="android:textSize">14sp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
     </style>
 
     <style name="playerScore">
@@ -19,16 +43,35 @@
         <item name="android:textColor">@color/colorPrimaryText</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <style name="playerPoverty">
-        <item name="android:gravity">center</item>
-        <item name="android:textColor">@color/colorSecondaryDark</item>
-        <item name="android:textSize">20sp</item>
-        <item name="android:textStyle">bold</item>
+    <style name="buttonsParentLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">3</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="scrollView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="buttonsLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="buttonLayout">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:layout_marginTop">8dp</item>
         <item name="android:layout_weight">1</item>
+        <item name="android:orientation">vertical</item>
     </style>
 
     <style name="AppTheme.buttonScore">
@@ -42,14 +85,10 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <style name="AppTheme.buttonReset">
-        <item name="android:textColor">@color/colorPrimaryText</item>
-        <item name="android:background">@drawable/button_selector</item>
-        <item name="android:textSize">10sp</item>
-        <item name="android:gravity">center</item>
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_weight">1</item>
+    <style name="dividerLine">
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@android:color/darker_gray</item>
     </style>
 
     <style name="resetLayout">
@@ -61,32 +100,24 @@
         <item name="android:orientation">horizontal</item>
     </style>
 
-    <style name="buttonLayout">
+    <style name="playerPoverty">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/colorSecondaryDark</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginBottom">8dp</item>
-        <item name="android:layout_marginTop">8dp</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:orientation">vertical</item>
     </style>
 
-    <style name="dividerLine">
-        <item name="android:layout_width">1dp</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:background">@android:color/darker_gray</item>
-    </style>
-
-    <style name="buttonsLayout">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:orientation">horizontal</item>
-    </style>
-
-    <style name="scoresLayout">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">0dp</item>
-        <item name="android:layout_weight">3</item>
-        <item name="android:orientation">horizontal</item>
+    <style name="AppTheme.buttonReset">
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="android:background">@drawable/button_selector</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
     </style>
 
 </resources>
