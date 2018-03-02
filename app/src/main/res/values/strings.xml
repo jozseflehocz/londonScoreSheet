@@ -7,10 +7,11 @@
     <string name="buildings">Buildings</string>
     <string name="undergrounds">Undergrounds (*2)</string>
     <string name="cards_in_building_display">Display</string>
-    <string name="victory_points_in_hand">VPs</string>
+    <string name="victory_points">VPs</string>
     <string name="unpaid_loan">Loans (-7)</string>
     <string name="poverty_points">Poverty</string>
     <string name="reset">Reset</string>
     <string name="add">+</string>
     <string name="substract">-</string>
+    <string name="default_score">0</string>
 </resources>
